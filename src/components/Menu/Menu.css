@@ -1,0 +1,25 @@
+.sidebar {
+  display: inline-block;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-tab {
+  color: white;
+  background: transparent;
+  border: none;
+  height: 30px;
+  font-size: 20px;
+  margin: 5px 0;
+  text-transform: capitalize;
+}
+
+.sidebar-tab.selected {
+  background: rgb(213, 145, 0);
+  border-radius: 0 1000em 1000em 0;
+}
+
+.sidebar-tab img {
+  height: 25px;
+}
