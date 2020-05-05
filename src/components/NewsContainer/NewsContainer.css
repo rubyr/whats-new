@@ -1,5 +1,3 @@
 .news-container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  columns: 300px;
 }

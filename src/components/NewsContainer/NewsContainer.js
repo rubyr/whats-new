@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './NewsContainer.css'
+import NewsArticle from '../NewsArticle/NewsArticle';
 
 class NewsContainer extends Component {
   render() {
@@ -7,9 +8,7 @@ class NewsContainer extends Component {
     return (
       <div className="news-container">
         {articles.map(article => (
-          <article>
-            <h3>{article.headline}</h3>
-          </article>
+          <NewsArticle key={article.id} content={article}/>
         ))}
       </div>
     )
