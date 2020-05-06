@@ -7,7 +7,7 @@ import entertainment from '../../data/entertainment';
 import './App.css';
 import NewsContainer from '../NewsContainer/NewsContainer';
 import Menu from '../Menu/Menu';
-// import SearchForm from '../SearchForm/SearchForm';
+import SearchForm from '../SearchForm/SearchForm';
 
 class App extends Component {
   constructor() {
@@ -18,7 +18,8 @@ class App extends Component {
       science,
       technology,
       entertainment,
-      currentTab: "local"
+      currentTab: "local",
+      filter: ""
     }
   }
 
@@ -28,13 +29,21 @@ class App extends Component {
     });
   }
 
+  filterArticles(searchInput) {
+    this.setState({
+      filter: searchInput
+    });
+  }
+
   render () {
     return (
-      <div className="app">
-        {/* <SearchForm /> */}
-        <Menu selected={this.state.currentTab} pickTopic={this.pickTopic.bind(this)} />
-        <NewsContainer articles={this.state[this.state.currentTab]}/>
-      </div>
+      <React.Fragment>
+        <SearchForm search={this.filterArticles.bind(this)}/>
+        <div className="app">
+          <Menu selected={this.state.currentTab} pickTopic={this.pickTopic.bind(this)} />
+          <NewsContainer articles={this.state[this.state.currentTab]} filter={this.state.filter}/>
+        </div>
+      </React.Fragment>
     );
   }
 }
