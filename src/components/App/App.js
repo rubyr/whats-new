@@ -40,7 +40,15 @@ class App extends Component {
     });
   }
 
-  render () {
+  render() {
+    const articles = this.state.local ? (
+      <NewsContainer
+        articles={this.state[this.state.currentTab]}
+        filter={this.state.filter}
+      />
+    ) : (
+      <h3>Loading articles, please wait...</h3>
+    );
     return (
       <React.Fragment>
         <SearchForm search={this.filterArticles.bind(this)} />
@@ -49,14 +57,7 @@ class App extends Component {
             selected={this.state.currentTab}
             pickTopic={this.pickTopic.bind(this)}
           />
-          {this.state.local ? (
-            <NewsContainer
-              articles={this.state[this.state.currentTab]}
-              filter={this.state.filter}
-            />
-          ) : (
-            <h3>Loading articles, please wait...</h3>
-          )}
+          {articles}
         </div>
       </React.Fragment>
     );

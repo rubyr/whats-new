@@ -12,11 +12,17 @@ const Menu = props => {
     );
   }
 
+  const menu = [
+    "local",
+    "entertainment",
+    "technology",
+    "science",
+    "health",
+  ].map((name) => button(name, props.selected === name));
+
   return (
     <aside className="sidebar">
-      {["local", "entertainment", "technology", "science", "health"].map(name => 
-        button(name, props.selected === name)
-      )}
+      {menu}
     </aside>
   );
 }

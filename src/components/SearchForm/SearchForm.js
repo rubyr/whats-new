@@ -29,14 +29,16 @@ class SearchForm extends Component {
   }
 
   render() {
+    const clearButton = this.state.input && (
+      <button className="clear-button" onClick={this.clearInput.bind(this)}>
+        &times;
+      </button>
+    );
     return (
       <header className="search-form">
         <h1>What's<span className="yellow">New</span></h1>
         <div>
-          {this.state.input && 
-            <button 
-              className="clear-button" 
-              onClick={this.clearInput.bind(this)}>&times;</button>}
+          {clearButton}
           <input 
             className="search-input" 
             role="form" 

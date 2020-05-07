@@ -12,13 +12,14 @@ class NewsContainer extends Component {
   }
 
   render() {
-    const {articles} = this.props;
+    const articleDisplay = this.props.articles.map((article) =>
+      this.showArticle(article, this.props.filter) && (
+        <NewsArticle key={article.id} content={article} />
+      )
+    );
     return (
       <div className="news-container" data-testid="news-container">
-        {articles.map(article => (
-          this.showArticle(article, this.props.filter) && 
-            <NewsArticle key={article.id} content={article}/>
-        ))}
+        {articleDisplay}
       </div>
     )
   }
