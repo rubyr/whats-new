@@ -36,7 +36,7 @@ class SearchForm extends Component {
     );
     return (
       <header className="search-form">
-        <h1>What's<span className="yellow">New</span></h1>
+        <h1>What's<span className="highlight">New</span></h1>
         <div>
           {clearButton}
           <input 
@@ -46,7 +46,8 @@ class SearchForm extends Component {
             onChange={this.updateInput.bind(this)}
             onKeyDown={this.updateInput.bind(this)}
             value={this.state.input}
-            data-testid="search-input"></input>
+            data-testid="search-input"
+            id="search-input"></input>
         </div>
         <button className="search-submit" onClick={this.search.bind(this)}>Search</button>
       </header>

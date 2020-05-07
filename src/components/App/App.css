@@ -6,6 +6,7 @@
 
 .app {
   display: flex;
+  flex-direction: column;
   background: #141527;
   min-height: 100vh;
   text-align: center;

@@ -1,0 +1,18 @@
+@media all and (min-width: 600px) {
+  .app {
+    flex-direction: row;
+  }
+  .search-form {
+    flex-direction: row;
+    height: 50px;
+  }
+  .sidebar {
+    width: 200px;
+    height: calc(100vh - 50px);
+    position: sticky;
+    top: 50px;
+  }
+  .news-container {
+    width: calc(100vw - 200px);
+  }
+}

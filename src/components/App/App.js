@@ -18,7 +18,6 @@ class App extends Component {
     fetch("https://whats-new-api.herokuapp.com/api/v1/news")
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         for (const category in data) {
           this.setState({
             [category]: data[category]
