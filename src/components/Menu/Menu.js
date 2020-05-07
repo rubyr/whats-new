@@ -6,7 +6,7 @@ const Menu = props => {
   const button = (name, selected) => {
     const classes = `sidebar-tab${selected ? " selected" : ""}`;
     return (
-      <button className={classes} onClick={() => props.pickTopic(name)}>
+      <button key={name} className={classes} onClick={() => props.pickTopic(name)}>
         {name}
       </button>
     );
