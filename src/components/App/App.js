@@ -1,9 +1,4 @@
 import React, { Component } from 'react';
-import local from '../../data/local';
-import health from '../../data/health';
-import science from '../../data/science';
-import technology from '../../data/technology';
-import entertainment from '../../data/entertainment';
 import './App.css';
 import NewsContainer from '../NewsContainer/NewsContainer';
 import Menu from '../Menu/Menu';
@@ -13,14 +8,24 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      local,
-      health,
-      science,
-      technology,
-      entertainment,
       currentTab: "local",
       filter: ""
     }
+    this.fetchNews();
+  }
+
+  fetchNews() {
+    fetch("https://whats-new-api.herokuapp.com/api/v1/news")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        for (const category in data) {
+          this.setState({
+            [category]: data[category]
+          });
+        }
+      }
+    );
   }
 
   pickTopic(topic) {
@@ -38,10 +43,20 @@ class App extends Component {
   render () {
     return (
       <React.Fragment>
-        <SearchForm search={this.filterArticles.bind(this)}/>
+        <SearchForm search={this.filterArticles.bind(this)} />
         <div className="app">
-          <Menu selected={this.state.currentTab} pickTopic={this.pickTopic.bind(this)} />
-          <NewsContainer articles={this.state[this.state.currentTab]} filter={this.state.filter}/>
+          <Menu
+            selected={this.state.currentTab}
+            pickTopic={this.pickTopic.bind(this)}
+          />
+          {this.state.local ? (
+            <NewsContainer
+              articles={this.state[this.state.currentTab]}
+              filter={this.state.filter}
+            />
+          ) : (
+            <h3>Loading articles, please wait...</h3>
+          )}
         </div>
       </React.Fragment>
     );
